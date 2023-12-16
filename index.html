@@ -26,7 +26,7 @@
   
    <meta charset="UTF-8"> 
   
-   <title>像从前一拍即合那样一拍两散。</title> 
+   <title>噗噗鱼</title> 
   
  </head> 
   
@@ -100,89 +100,89 @@
   
          this.x = x; 
   
-         this.y = y; 
+         这.y= y；
   
-         this.hue = hue; 
+         这.色彩=色相；
   
-         this.lightness = 50; 
+         这.轻 = 50; 
   
-         this.size = 15 + Math.random() * 10; 
+         这.大小 = 15+数学。随意() * 10; 
   
-         const angle = Math.random() * 2 * Math.PI; 
+         常数 角=数学。随意() * 2*数学。蛋白酶体抑制剂; 
   
-         const blastSpeed = 1 + Math.random() * 6; 
+         常数 爆破速度 = 1+数学。随意() * 6; 
   
-         this.xSpeed = Math.cos(angle) * blastSpeed; 
+         这.xSpeed=数学。余弦(角)* blastSpeed
   
-         this.ySpeed = Math.sin(angle) * blastSpeed; 
+         这.ySpeed=数学。犯罪(角)* blastSpeed
   
-         this.target = getTarget(); 
+         这.目标 = getTarget(); 
   
-         this.ttl = 100; 
+         这.电平信号 = 100; 
   
-         this.timer = 0; 
-  
-       } 
-  
-       draw() { 
-  
-         ctx2.fillStyle = `hsl(${this.hue}, 100%, ${this.lightness}%)`; 
-  
-         ctx2.beginPath(); 
-  
-         ctx2.arc(this.x, this.y, this.size, 0, 2 * Math.PI); 
-  
-         ctx2.closePath(); 
-  
-         ctx2.fill(); 
+         这.计时器 = 0; 
   
        } 
   
-       update() { 
+       画() { 
   
-         if (this.target) { 
+ctx2。填充样式 = ` hsl(${这.色彩}, 100%, ${这.轻}%)`; 
   
-           const dx = this.target.x - this.x; 
+ctx2。起点路径(); 
   
-           const dy = this.target.y - this.y; 
+ctx2。弧(这.x, 这.y, 这.大小, 0, 2*数学。蛋白酶体抑制剂); 
   
-           const dist = Math.sqrt(dx * dx + dy * dy); 
+ctx2。封闭路径(); 
   
-           const a = Math.atan2(dy, dx); 
+ctx2。充满(); 
   
-           const tx = Math.cos(a) * 5; 
+       } 
   
-           const ty = Math.sin(a) * 5; 
+       更新() { 
   
-           this.size = lerp(this.size, 1.5, 0.05); 
+         如果 (这.目标) { 
+  
+           常数 高级的（deluxe的简写） = 这.目标.x - 这.x; 
+  
+           常数 镝 = 这.目标.y - 这.y; 
+  
+           常数 距离=数学。平方根计算(dx * dx + dy * dy); 
+  
+           常数 a=数学。atan2(dy，dx); 
+  
+           常数 税=数学。余弦(a) * 5; 
+  
+           常数 总产量=数学。犯罪(a) * 5; 
+  
+           这.大小 = 昆虫分泌出来的一种蜜(这.大小, 1.5, 0.05); 
   
   
   
-           if (dist < 5) { 
+           如果 (距离<5) { 
   
-             this.lightness = lerp(this.lightness, 100, 0.01); 
+             这.轻 = 昆虫分泌出来的一种蜜(这.轻, 100, 0.01); 
   
-             this.xSpeed = this.ySpeed = 0; 
+             这.xSpeed = 这.ySpeed = 0; 
   
-             this.x = lerp(this.x, this.target.x + fidelity / 2, 0.05); 
+             这.x = 昆虫分泌出来的一种蜜(这.x, 这.目标.x+保真度/2, 0.05); 
   
-             this.y = lerp(this.y, this.target.y + fidelity / 2, 0.05); 
+             这.y = 昆虫分泌出来的一种蜜(这.y, 这.目标.y+保真度/2, 0.05); 
   
-             this.timer += 1; 
+             这.计时器 += 1; 
   
-           } else 
+           } 其他 
   
-             if (dist < 10) { 
+             如果 (距离<10) { 
   
-               this.lightness = lerp(this.lightness, 100, 0.01); 
+               这.轻 = 昆虫分泌出来的一种蜜(这.轻, 100, 0.01); 
   
-               this.xSpeed = lerp(this.xSpeed, tx, 0.1); 
+               这.xSpeed = 昆虫分泌出来的一种蜜(这.xSpeed，tx，0.1); 
   
-               this.ySpeed = lerp(this.ySpeed, ty, 0.1); 
+               这.ySpeed = 昆虫分泌出来的一种蜜(这.ySpeed，泰，0.1); 
   
-               this.timer += 1; 
+               这.计时器 += 1; 
   
-             } else { 
+             } 其他 { 
   
                this.xSpeed = lerp(this.xSpeed, tx, 0.02); 
   
