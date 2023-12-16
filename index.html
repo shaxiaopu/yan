@@ -26,7 +26,7 @@
   
    <meta charset="UTF-8"> 
   
-   <title>噗噗鱼</title> 
+   <title>傻小璞</title> 
   
  </head> 
   
@@ -100,89 +100,89 @@
   
          this.x = x; 
   
-         这.y= y；
+         this.y = y; 
   
-         这.色彩=色相；
+         this.hue = hue; 
   
-         这.轻 = 50; 
+         this.lightness = 50; 
   
-         这.大小 = 15+数学。随意() * 10; 
+         this.size = 15 + Math.random() * 10; 
   
-         常数 角=数学。随意() * 2*数学。蛋白酶体抑制剂; 
+         const angle = Math.random() * 2 * Math.PI; 
   
-         常数 爆破速度 = 1+数学。随意() * 6; 
+         const blastSpeed = 1 + Math.random() * 6; 
   
-         这.xSpeed=数学。余弦(角)* blastSpeed
+         this.xSpeed = Math.cos(angle) * blastSpeed; 
   
-         这.ySpeed=数学。犯罪(角)* blastSpeed
+         this.ySpeed = Math.sin(angle) * blastSpeed; 
   
-         这.目标 = getTarget(); 
+         this.target = getTarget(); 
   
-         这.电平信号 = 100; 
+         this.ttl = 100; 
   
-         这.计时器 = 0; 
-  
-       } 
-  
-       画() { 
-  
-ctx2。填充样式 = ` hsl(${这.色彩}, 100%, ${这.轻}%)`; 
-  
-ctx2。起点路径(); 
-  
-ctx2。弧(这.x, 这.y, 这.大小, 0, 2*数学。蛋白酶体抑制剂); 
-  
-ctx2。封闭路径(); 
-  
-ctx2。充满(); 
+         this.timer = 0; 
   
        } 
   
-       更新() { 
+       draw() { 
   
-         如果 (这.目标) { 
+         ctx2.fillStyle = `hsl(${this.hue}, 100%, ${this.lightness}%)`; 
   
-           常数 高级的（deluxe的简写） = 这.目标.x - 这.x; 
+         ctx2.beginPath(); 
   
-           常数 镝 = 这.目标.y - 这.y; 
+         ctx2.arc(this.x, this.y, this.size, 0, 2 * Math.PI); 
   
-           常数 距离=数学。平方根计算(dx * dx + dy * dy); 
+         ctx2.closePath(); 
   
-           常数 a=数学。atan2(dy，dx); 
+         ctx2.fill(); 
   
-           常数 税=数学。余弦(a) * 5; 
+       } 
   
-           常数 总产量=数学。犯罪(a) * 5; 
+       update() { 
   
-           这.大小 = 昆虫分泌出来的一种蜜(这.大小, 1.5, 0.05); 
+         if (this.target) { 
+  
+           const dx = this.target.x - this.x; 
+  
+           const dy = this.target.y - this.y; 
+  
+           const dist = Math.sqrt(dx * dx + dy * dy); 
+  
+           const a = Math.atan2(dy, dx); 
+  
+           const tx = Math.cos(a) * 5; 
+  
+           const ty = Math.sin(a) * 5; 
+  
+           this.size = lerp(this.size, 1.5, 0.05); 
   
   
   
-           如果 (距离<5) { 
+           if (dist < 5) { 
   
-             这.轻 = 昆虫分泌出来的一种蜜(这.轻, 100, 0.01); 
+             this.lightness = lerp(this.lightness, 100, 0.01); 
   
-             这.xSpeed = 这.ySpeed = 0; 
+             this.xSpeed = this.ySpeed = 0; 
   
-             这.x = 昆虫分泌出来的一种蜜(这.x, 这.目标.x+保真度/2, 0.05); 
+             this.x = lerp(this.x, this.target.x + fidelity / 2, 0.05); 
   
-             这.y = 昆虫分泌出来的一种蜜(这.y, 这.目标.y+保真度/2, 0.05); 
+             this.y = lerp(this.y, this.target.y + fidelity / 2, 0.05); 
   
-             这.计时器 += 1; 
+             this.timer += 1; 
   
-           } 其他 
+           } else 
   
-             如果 (距离<10) { 
+             if (dist < 10) { 
   
-               这.轻 = 昆虫分泌出来的一种蜜(这.轻, 100, 0.01); 
+               this.lightness = lerp(this.lightness, 100, 0.01); 
   
-               这.xSpeed = 昆虫分泌出来的一种蜜(这.xSpeed，tx，0.1); 
+               this.xSpeed = lerp(this.xSpeed, tx, 0.1); 
   
-               这.ySpeed = 昆虫分泌出来的一种蜜(这.ySpeed，泰，0.1); 
+               this.ySpeed = lerp(this.ySpeed, ty, 0.1); 
   
-               这.计时器 += 1; 
+               this.timer += 1; 
   
-             } 其他 { 
+             } else { 
   
                this.xSpeed = lerp(this.xSpeed, tx, 0.02); 
   
